@@ -6,37 +6,39 @@ import Contact from "../src/components/Contact/Contact";
 import Portfolio from "../src/components/Portfolio/Portfolio";
 import Resume from "../src/components/Resume/Resume";
 import Footer from "../src/components/Footer/Footer";
+import NavTabs from "../src/components/Nav/Nav"
 
-
+currentComp = 'About'
 function App() {
-    const [currentComp, compChange] = useState("about");
+    const [currentPage, handlePageChange] = useState("About");
 
-    if (currentComp === 'About') {
+
+    if (currentPage === 'About') {
         return <About />;
     }
-    if (currentComp === 'Contact') {
+    if (
+        currentPage === 'Contact') {
         return <Contact />
     }
-    if (currentComp === 'Footer') {
-        return <Footer />
-    }
-    if (currentComp === 'Header') {
-        return <Header />
-    }
-    if (currentComp === 'Nav') {
-        return <Nav />
-    }
-    if (currentComp === 'Portfolio') {
+    if (currentPage === 'Portfolio') {
         return <Portfolio />
     }
-    if (currentComp === 'Resume') {
+    if (currentPage === 'Resume') {
         return <Resume />
     }
 
 
     return (
-        <div>
-            
-        </div>
+        <>
+        <title>Mark Tovar | {currentPage} </title>
+        <Header
+            currentPage={currentPage}
+            handlePageChange={handlePageChange}
+            ></Header>
+            <main>{App()}</main>
+            <Footer></Footer>
+        </>
     )
 }
+
+export default App;
